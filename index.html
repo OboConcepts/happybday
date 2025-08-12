@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday Pathu 🎂</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffd1dc 0%, #ffb347 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    #question-container, #final-message {
+      max-width: 450px;
+      background: rgba(255,255,255,0.2);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+
+    #greeting {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.4);
+      user-select: none;
+    }
+
+    #question-text {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      font-weight: bold;
+      min-height: 80px;
+    }
+
+    .btn-group {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 12px 28px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      color: white;
+      background-color: #ff85a2;
+      box-shadow: 0 4px 8px rgba(255, 133, 162, 0.5);
+      flex: 1;
+      min-width: 100px;
+    }
+    button:hover:not(:disabled) {
+      background-color: #ff5e87;
+      box-shadow: 0 6px 12px rgba(255, 94, 135, 0.7);
+    }
+    button:disabled {
+      background-color: #999;
+      cursor: default;
+      box-shadow: none;
+      color: #ddd;
+    }
+
+    #reply-text {
+      font-size: 1.3rem;
+      font-style: italic;
+      margin-top: 20px;
+      min-height: 180px;
+      color: #fff5f8;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.3);
+      user-select: text;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    #reply-text img {
+      max-width: 180px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    #final-message {
+      display: none;
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.8rem;
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+      flex-direction: column;
+      align-items: center;
+      user-select: none;
+    }
+
+    #final-message img {
+      width: 280px;
+      max-width: 90vw;
+      margin-top: 25px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="question-container">
+    <div id="greeting">Happy Birthday Pathu ❤️ My Sweet Wife 🎂</div>
+    <div id="question-text">Loading question...</div>
+    <div class="btn-group">
+      <button id="yes-btn">YES</button>
+      <button id="no-btn">NO</button>
+    </div>
+    <div id="reply-text"></div>
+  </div>
+
+  <div id="final-message">
+    <div id="final-text">I Love You Pathu ❤️ My Sweet Wife 🎉</div>
+    <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" alt="Heart Animation" />
+  </div>
+
+<script>
+  const questions = [
+    "NEE NAMMUDE RELATIONSHIPIL HAPPY ANO?",
+    "INNE ISHTAPETTITANO KALYANATHINU SAMMADHICHATH?",
+    "IYU INTEDTH NUNA PARAYARUNDO?",
+    "ANAK INNODU ANTE PAST ENTHELUM INI PARAYAN UNDO?",
+    "ANAK THONNUNUNDO NJAN ORU POTTAN ANENNU?"
+  ];
+
+  const replies = {
+    yes: [
+      "NINTE SEVANAGALK PERUTH NANNI",
+      "AAH ITH NJN VISHWASIKANAM LE",
+      "ANTE AVASANAM AYIRIKUM",
+      "NEE ORU KILLADI THANNE",
+      "ALLELUM SAME VIBE ULLORU PETTENNU THIRICHARIYUM"
+    ],
+    no: [
+      "NINTE VIDHI,",
+      "ENNAL SAHICHALA,",
+      "IYU INTE MUTHMANI ANU,",
+      "NJAN ANGU VISHWASICHU,",
+      "VERY GOOD! I LOVE YOU CHELLAM"
+    ]
+  };
+
+  const gifs = {
+    yes: [
+      "https://media.giphy.com/media/26BRzozg4TCBXv6QU/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/PnmsSAdER9awBpRWww/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/117QwcUpOGgxaQPjR1/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZW1vZnR4bjB5Z2Vlcm9hMHpkaWhlMHJhYjl1ODBjankydjIycWtvMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/QsgS4j8szSaEG3WYpr/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/7RjDmX5WtXbXnuYhGW/giphy.gif"
+    ],
+    no: [
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZW1vZnR4bjB5Z2Vlcm9hMHpkaWhlMHJhYjl1ODBjankydjIycWtvMiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RJbk1xs8d3CqtoKNdU/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/htkIOA6sdxID874ni4/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3OHg1YzJyZmdrbHI4emcwcjVod3Vmeno0bmNkd3RkemludThtM2xlcyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MoDHlX4whLqqQ/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jPGO7pGfA0DYYjk8D5/giphy.gif",
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmtrNDV3dGdvemY0b2wxbndjYWsxNWU4Mms1eWNxeXNkN2FsZjJibCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/131vzOt5xjWtzi/giphy.gif"
+    ]
+  };
+
+  const greeting = document.getElementById('greeting');
+  const questionText = document.getElementById('question-text');
+  const yesBtn = document.getElementById('yes-btn');
+  const noBtn = document.getElementById('no-btn');
+  const replyText = document.getElementById('reply-text');
+  const questionContainer = document.getElementById('question-container');
+  const finalMessage = document.getElementById('final-message');
+  const finalText = document.getElementById('final-text');
+
+  let currentQuestionIndex = 0;
+  let allNo = true;
+
+  function showQuestion(index) {
+    replyText.innerHTML = "";
+    questionText.textContent = questions[index];
+    yesBtn.disabled = false;
+    noBtn.disabled = false;
+    yesBtn.style.display = "inline-block";
+    noBtn.style.display = "inline-block";
+
+    if (index === questions.length - 1) {
+      noBtn.style.display = "none";
+    }
+  }
+
+  function showReply(type, idx) {
+    const reply = replies[type][idx];
+    const gifUrl = gifs[type][idx];
+
+    replyText.innerHTML = `
+      <div>${reply}</div>
+      <img src="${gifUrl}" alt="Funny reaction" />
+    `;
+  }
+
+  function handleAnswer(e) {
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+
+    const ans = e.target.id === 'yes-btn' ? 'yes' : 'no';
+    if (ans === 'no') allNo = allNo && true;
+    else allNo = false;
+
+    showReply(ans, currentQuestionIndex);
+
+    setTimeout(() => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion(currentQuestionIndex);
+      } else {
+        questionContainer.style.display = 'none';
+        finalMessage.style.display = 'flex';
+
+        if (allNo) {
+          finalText.textContent = "I'll still keep loving you Pathu ❤️ My Sweet Wife 🎂";
+          finalMessage.querySelector('img').src = "/images/1.jpeg";
+        } else {
+          finalText.textContent = "I Love You Pathu ❤️ My Sweet Wife 🎉";
+          finalMessage.querySelector('img').src = "/images/1.jpeg";
+        }
+      }
+    }, 3500);
+  }
+
+  yesBtn.addEventListener('click', handleAnswer);
+  noBtn.addEventListener('click', handleAnswer);
+
+  showQuestion(currentQuestionIndex);
+</script>
+</body>
+</html>
